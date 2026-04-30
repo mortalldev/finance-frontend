@@ -30,13 +30,7 @@ export function LoginForm() {
   const onSubmit = async (values: LoginValues) => {
     try {
       const result = await login(values).unwrap()
-      dispatch(
-        setUser({
-          user: result.user,
-          accessToken: result.accessToken,
-          refreshToken: result.refreshToken,
-        })
-      )
+      dispatch(setUser({ user: result.user }))
       toast.success('Muvaffaqiyatli kirdingiz')
       router.push('/')
     } catch (error: any) {
