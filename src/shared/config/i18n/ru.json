@@ -1,0 +1,43 @@
+{
+  "dashboard": {
+    "title": "Главная",
+    "totalExpenses": "Всего расходов",
+    "todayExpenses": "Расходы за сегодня",
+    "thisWeek": "За эту неделю",
+    "thisMonth": "За этот месяц",
+    "topCategory": "Топ категория"
+  },
+  "auth": {
+    "login": "Войти",
+    "register": "Регистрация",
+    "username": "Имя пользователя",
+    "password": "Пароль",
+    "fullName": "ФИО",
+    "email": "Email",
+    "noAccount": "Нет аккаунта?",
+    "haveAccount": "Есть аккаунт?"
+  },
+  "xarajat": {
+    "title": "Расходы",
+    "add": "Добавить",
+    "search": "Поиск...",
+    "loadMore": "Загрузить еще",
+    "nomi": "Название",
+    "miqdor": "Сумма",
+    "kategoriya": "Категория",
+    "sana": "Дата",
+    "manzil": "Адрес",
+    "deleteConfirm": "Вы уверены, что хотите удалить?",
+    "yes": "Да",
+    "no": "Нет"
+  },
+  "settings": {
+    "title": "Настройки",
+    "profile": "Профиль",
+    "theme": "Внешний вид",
+    "language": "Язык",
+    "light": "Светлая",
+    "dark": "Темная",
+    "system": "Системная"
+  }
+}

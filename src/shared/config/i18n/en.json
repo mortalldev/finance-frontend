@@ -1,0 +1,43 @@
+{
+  "dashboard": {
+    "title": "Dashboard",
+    "totalExpenses": "Total Expenses",
+    "todayExpenses": "Today's Expenses",
+    "thisWeek": "This Week",
+    "thisMonth": "This Month",
+    "topCategory": "Top Category"
+  },
+  "auth": {
+    "login": "Login",
+    "register": "Register",
+    "username": "Username",
+    "password": "Password",
+    "fullName": "Full Name",
+    "email": "Email",
+    "noAccount": "Don't have an account?",
+    "haveAccount": "Already have an account?"
+  },
+  "xarajat": {
+    "title": "Expenses",
+    "add": "Add New",
+    "search": "Search...",
+    "loadMore": "Load More",
+    "nomi": "Name",
+    "miqdor": "Amount",
+    "kategoriya": "Category",
+    "sana": "Date",
+    "manzil": "Location",
+    "deleteConfirm": "Are you sure you want to delete?",
+    "yes": "Yes",
+    "no": "No"
+  },
+  "settings": {
+    "title": "Settings",
+    "profile": "Profile",
+    "theme": "Theme",
+    "language": "Language",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  }
+}

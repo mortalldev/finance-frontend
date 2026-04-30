@@ -1,0 +1,44 @@
+{
+  "dashboard": {
+    "title": "Bosh sahifa",
+    "totalExpenses": "Jami xarajatlar",
+    "todayExpenses": "Bugungi xarajatlar",
+    "thisWeek": "Bu haftalik",
+    "thisMonth": "Bu oylik",
+    "topCategory": "Eng ko'p sarflangan kategoriya",
+    "statsChart": "Xarajatlar grafigi"
+  },
+  "auth": {
+    "login": "Kirish",
+    "register": "Ro'yxatdan o'tish",
+    "username": "Foydalanuvchi nomi",
+    "password": "Parol",
+    "fullName": "Ism familiya",
+    "email": "Email",
+    "noAccount": "Akkauntingiz yo'qmi?",
+    "haveAccount": "Akkauntingiz bormi?"
+  },
+  "xarajat": {
+    "title": "Xarajatlar",
+    "add": "Qo'shish",
+    "search": "Qidirish...",
+    "loadMore": "Ko'proq yuklash",
+    "nomi": "Nomi",
+    "miqdor": "Miqdori",
+    "kategoriya": "Kategoriya",
+    "sana": "Sana",
+    "manzil": "Manzil",
+    "deleteConfirm": "Haqiqatan ham o'chirmoqchimisiz?",
+    "yes": "Ha",
+    "no": "Yo'q"
+  },
+  "settings": {
+    "title": "Sozlamalar",
+    "profile": "Profil",
+    "theme": "Ko'rinish",
+    "language": "Til",
+    "light": "Yorug'",
+    "dark": "Qorong'i",
+    "system": "Tizim"
+  }
+}
