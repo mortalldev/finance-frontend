@@ -33,7 +33,7 @@ export function ProfileEditModal({ isOpen, onClose, user }: ProfileEditModalProp
   const onSubmit = async (data: any) => {
     try {
       const updatedUser = await updateProfile(data).unwrap()
-      dispatch(setUser(updatedUser))
+      dispatch(setUser({ user: updatedUser }))
       toast.success('Profil yangilandi')
       onClose()
     } catch {

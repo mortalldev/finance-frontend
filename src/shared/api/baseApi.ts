@@ -1,9 +1,16 @@
 import { fetchBaseQuery, createApi } from '@reduxjs/toolkit/query/react'
-import { logout } from '@/entities/user/model/userSlice'
+import { logout, setUser } from '@/entities/user/model/userSlice'
 
 const baseQuery = fetchBaseQuery({
   baseUrl: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001',
   credentials: 'include',
+  prepareHeaders: (headers, { getState }) => {
+    const token = (getState() as any).user.accessToken
+    if (token) {
+      headers.set('authorization', `Bearer ${token}`)
+    }
+    return headers
+  },
 })
 
 const baseQueryWithReauth = async (args: any, api: any, extraOptions: any) => {
@@ -18,6 +25,8 @@ const baseQueryWithReauth = async (args: any, api: any, extraOptions: any) => {
     )
 
     if (refreshResult.data) {
+      // update user state with new token
+      api.dispatch(setUser(refreshResult.data as any))
       // success, retry original request
       result = await baseQuery(args, api, extraOptions)
     } else {
