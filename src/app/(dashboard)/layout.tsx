@@ -24,7 +24,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
   useEffect(() => {
     if (user) {
-      dispatch(setUser(user))
+      dispatch(setUser({ user }))
     }
     if (error) {
       dispatch(logout())
