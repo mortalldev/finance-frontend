@@ -7,9 +7,11 @@ export const localStorageMiddleware: Middleware = (store) => (next) => (action) 
     if (state.user.isAuthenticated && state.user.user) {
       localStorage.setItem('user', JSON.stringify(state.user.user))
       localStorage.setItem('accessToken', state.user.accessToken)
+      localStorage.setItem('refreshToken', state.user.refreshToken)
     } else {
       localStorage.removeItem('user')
       localStorage.removeItem('accessToken')
+      localStorage.removeItem('refreshToken')
     }
   }
   return result
