@@ -21,7 +21,6 @@ const baseQueryWithReauth = async (args: any, api: any, extraOptions: any) => {
     } else {
       api.dispatch(logout())
       if (typeof window !== 'undefined') {
-        localStorage.removeItem('user')
         window.location.href = '/login'
       }
     }

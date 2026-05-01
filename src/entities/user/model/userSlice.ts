@@ -6,13 +6,6 @@ interface UserState {
 }
 
 const getInitialState = (): UserState => {
-  if (typeof window !== 'undefined') {
-    const user = localStorage.getItem('user')
-    return {
-      user: user ? JSON.parse(user) : null,
-      isAuthenticated: !!user,
-    }
-  }
   return { user: null, isAuthenticated: false }
 }
 

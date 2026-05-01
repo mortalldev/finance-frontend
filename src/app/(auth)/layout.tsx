@@ -2,23 +2,21 @@
 import { useSelector } from 'react-redux'
 import { RootState } from '@/shared/store'
 import { useRouter } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Zap } from 'lucide-react'
 
 export default function AuthLayout({ children }: { children: React.ReactNode }) {
   const { isAuthenticated } = useSelector((state: RootState) => state.user)
   const router = useRouter()
-  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
-    setMounted(true)
     if (isAuthenticated) {
       router.push('/')
     }
   }, [isAuthenticated, router])
 
-  if (!mounted || isAuthenticated) return null
+  if (isAuthenticated) return null
 
   return (
     <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-100 via-white to-purple-100 px-4 dark:from-slate-900 dark:via-slate-900 dark:to-slate-800">
