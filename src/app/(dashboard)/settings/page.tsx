@@ -6,12 +6,16 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/sha
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/shared/ui/select'
 import { Label } from '@/shared/ui/label'
 import { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '@/shared/store'
 import { motion } from 'framer-motion'
-import { User, Palette, Languages, ShieldCheck, Mail, UserCircle } from 'lucide-react'
+import { User, Palette, Languages, ShieldCheck, Mail, UserCircle, LogOut } from 'lucide-react'
 import { Button } from '@/shared/ui/button'
 import { ProfileEditModal } from '@/features/user/ui/ProfileEditModal'
+import { useLogoutUserMutation } from '@/shared/api/authApi'
+import { logout } from '@/entities/user/model/userSlice'
+import { useRouter } from 'next/navigation'
+import { ConfirmModal } from '@/shared/ui/ConfirmModal'
 
 export default function SettingsPage() {
   const { t, i18n } = useTranslation()
@@ -19,6 +23,22 @@ export default function SettingsPage() {
   const user = useSelector((state: RootState) => state.user.user)
   const [mounted, setMounted] = useState(false)
   const [isEditModalOpen, setIsEditModalOpen] = useState(false)
+  const [showLogoutModal, setShowLogoutModal] = useState(false)
+
+  const [logoutUser, { isLoading: isLoggingOut }] = useLogoutUserMutation()
+  const dispatch = useDispatch()
+  const router = useRouter()
+
+  const handleLogout = async () => {
+    try {
+      await logoutUser({}).unwrap()
+      dispatch(logout())
+      router.push('/login')
+    } catch {
+      dispatch(logout())
+      router.push('/login')
+    }
+  }
 
   useEffect(() => {
     setMounted(true)
@@ -182,12 +202,41 @@ export default function SettingsPage() {
               </div>
             </CardHeader>
           </Card>
+
+          {/* Logout (Mobile Only) */}
+          <Card className="border-red-100 bg-red-50/30 md:hidden dark:border-red-900/30 dark:bg-red-950/10">
+            <CardHeader className="flex flex-row items-center gap-4">
+              <div className="rounded-xl bg-red-100 p-2.5 text-red-600 dark:bg-red-950/50 dark:text-red-400">
+                <LogOut size={20} />
+              </div>
+              <div className="flex-1">
+                <CardTitle className="text-red-600 dark:text-red-400">{t('auth.logout')}</CardTitle>
+                <CardDescription>Tizimdan xavfsiz chiqish</CardDescription>
+              </div>
+              <Button
+                variant="destructive"
+                size="sm"
+                className="rounded-xl"
+                onClick={() => setShowLogoutModal(true)}
+              >
+                {t('auth.logout')}
+              </Button>
+            </CardHeader>
+          </Card>
         </motion.div>
       </div>
       <ProfileEditModal
         isOpen={isEditModalOpen}
         onClose={() => setIsEditModalOpen(false)}
         user={user}
+      />
+      <ConfirmModal
+        isOpen={showLogoutModal}
+        onClose={() => setShowLogoutModal(false)}
+        onConfirm={handleLogout}
+        title={t('auth.logoutTitle')}
+        description={t('auth.logoutConfirm')}
+        loading={isLoggingOut}
       />
     </motion.div>
   )

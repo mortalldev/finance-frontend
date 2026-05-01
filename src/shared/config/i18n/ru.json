@@ -15,7 +15,10 @@
     "fullName": "ФИО",
     "email": "Email",
     "noAccount": "Нет аккаунта?",
-    "haveAccount": "Есть аккаунт?"
+    "haveAccount": "Есть аккаунт?",
+    "logout": "Выход",
+    "logoutTitle": "Выход из системы",
+    "logoutConfirm": "Вы действительно хотите выйти?"
   },
   "xarajat": {
     "title": "Расходы",

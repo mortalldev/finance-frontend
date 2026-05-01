@@ -15,7 +15,10 @@
     "fullName": "Full Name",
     "email": "Email",
     "noAccount": "Don't have an account?",
-    "haveAccount": "Already have an account?"
+    "haveAccount": "Already have an account?",
+    "logout": "Log Out",
+    "logoutTitle": "Logout",
+    "logoutConfirm": "Are you sure you want to logout?"
   },
   "xarajat": {
     "title": "Expenses",

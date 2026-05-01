@@ -16,7 +16,10 @@
     "fullName": "Ism familiya",
     "email": "Email",
     "noAccount": "Akkauntingiz yo'qmi?",
-    "haveAccount": "Akkauntingiz bormi?"
+    "haveAccount": "Akkauntingiz bormi?",
+    "logout": "Chiqish",
+    "logoutTitle": "Tizimdan chiqish",
+    "logoutConfirm": "Haqiqatan ham tizimdan chiqmoqchimisiz?"
   },
   "xarajat": {
     "title": "Xarajatlar",

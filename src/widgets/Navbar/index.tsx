@@ -93,8 +93,8 @@ export function Navbar() {
         isOpen={showLogoutModal}
         onClose={() => setShowLogoutModal(false)}
         onConfirm={handleLogout}
-        title="Tizimdan chiqish"
-        description="Haqiqatan ham tizimdan chiqmoqchimisiz?"
+        title={t('auth.logoutTitle')}
+        description={t('auth.logoutConfirm')}
         loading={isLoggingOut}
       />
     </nav>
