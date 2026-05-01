@@ -135,19 +135,19 @@ export function XarajatTable({ data, view }: XarajatTableProps) {
         <table className="w-full border-collapse text-left text-sm">
           <thead>
             <tr className="border-b border-slate-100 bg-slate-50/30 dark:border-slate-800 dark:bg-slate-900/30">
-              <th className="px-8 py-5 text-[10px] font-bold tracking-widest text-slate-500 uppercase dark:text-slate-400">
+              <th className="px-4 py-5 text-[10px] font-bold tracking-widest text-slate-500 uppercase sm:px-8 dark:text-slate-400">
                 {t('xarajat.nomi')}
               </th>
-              <th className="px-8 py-5 text-[10px] font-bold tracking-widest text-slate-500 uppercase dark:text-slate-400">
+              <th className="hidden px-4 py-5 text-[10px] font-bold tracking-widest text-slate-500 uppercase sm:table-cell sm:px-8 dark:text-slate-400">
                 {t('xarajat.kategoriya')}
               </th>
-              <th className="px-8 py-5 text-[10px] font-bold tracking-widest text-slate-500 uppercase dark:text-slate-400">
+              <th className="px-4 py-5 text-[10px] font-bold tracking-widest text-slate-500 uppercase sm:px-8 dark:text-slate-400">
                 {t('xarajat.miqdor')}
               </th>
-              <th className="px-8 py-5 text-[10px] font-bold tracking-widest text-slate-500 uppercase dark:text-slate-400">
+              <th className="hidden px-4 py-5 text-[10px] font-bold tracking-widest text-slate-500 uppercase sm:table-cell sm:px-8 dark:text-slate-400">
                 {t('xarajat.sana')}
               </th>
-              <th className="px-8 py-5 text-right text-[10px] font-bold tracking-widest text-slate-500 uppercase dark:text-slate-400">
+              <th className="px-4 py-5 text-right text-[10px] font-bold tracking-widest text-slate-500 uppercase sm:px-8 dark:text-slate-400">
                 Amallar
               </th>
             </tr>
@@ -159,38 +159,52 @@ export function XarajatTable({ data, view }: XarajatTableProps) {
                 variants={itemAnim}
                 className="group border-b border-slate-50 transition-colors last:border-0 hover:bg-blue-50/30 dark:border-slate-800/50 dark:hover:bg-blue-900/10"
               >
-                <td className="px-8 py-4">
+                <td className="min-w-[140px] px-4 py-4 sm:px-8">
                   <div className="flex flex-col">
-                    <span className="font-bold text-slate-800 dark:text-slate-200">{item.nom}</span>
+                    <span
+                      className="line-clamp-1 font-bold text-slate-800 dark:text-slate-200"
+                      title={item.nom}
+                    >
+                      {item.nom}
+                    </span>
+                    <div className="flex flex-col sm:hidden">
+                      <span className="text-[10px] font-medium text-slate-500 uppercase">
+                        {item.kategoriya}
+                      </span>
+                      <span className="text-[10px] text-slate-400">{formatDate(item.sana)}</span>
+                    </div>
                     {item.manzil && (
-                      <span className="line-clamp-1 text-[11px] text-slate-400 italic">
+                      <span
+                        className="line-clamp-1 text-[11px] text-slate-400 italic"
+                        title={item.manzil}
+                      >
                         {item.manzil}
                       </span>
                     )}
                   </div>
                 </td>
-                <td className="px-8 py-4">
+                <td className="hidden px-4 py-4 sm:table-cell sm:px-8">
                   <span className="rounded-md bg-slate-100 px-2 py-1 text-[10px] font-bold tracking-wider text-slate-600 uppercase dark:bg-slate-800 dark:text-slate-400">
                     {item.kategoriya}
                   </span>
                 </td>
-                <td className="px-8 py-4 font-black text-slate-900 dark:text-slate-100">
+                <td className="px-4 py-4 font-black whitespace-nowrap text-slate-900 sm:px-8 dark:text-slate-100">
                   {formatMoney(item.miqdor)}{' '}
                   <span className="ml-0.5 text-[10px] text-slate-400">so'm</span>
                 </td>
-                <td className="px-8 py-4">
+                <td className="hidden px-4 py-4 sm:table-cell sm:px-8">
                   <div className="flex items-center gap-1.5 text-slate-500 dark:text-slate-400">
                     <Calendar size={14} className="text-slate-300 dark:text-slate-600" />
                     {formatDate(item.sana)}
                   </div>
                 </td>
-                <td className="px-8 py-4 text-right">
-                  <div className="flex justify-end gap-1 opacity-0 transition-opacity group-hover:opacity-100">
+                <td className="px-4 py-4 text-right sm:px-8">
+                  <div className="flex justify-end gap-1 sm:opacity-0 sm:transition-opacity sm:group-hover:opacity-100">
                     <Button
                       variant="ghost"
                       size="icon"
                       onClick={() => setEditItem(item)}
-                      className="h-8 w-8 rounded-lg border border-transparent shadow-sm hover:border-slate-200 hover:bg-white dark:hover:border-slate-700 dark:hover:bg-slate-800"
+                      className="h-8 w-8 rounded-lg border border-slate-200/50 bg-white/50 shadow-sm hover:border-slate-300 hover:bg-white sm:border-transparent sm:bg-transparent sm:shadow-none dark:border-slate-700/50 dark:bg-slate-800/50 dark:hover:bg-slate-800"
                     >
                       <Edit2 size={14} className="text-slate-500" />
                     </Button>
@@ -198,7 +212,7 @@ export function XarajatTable({ data, view }: XarajatTableProps) {
                       variant="ghost"
                       size="icon"
                       onClick={() => setDeleteId(item.id)}
-                      className="h-8 w-8 rounded-lg border border-transparent text-red-500 shadow-sm hover:border-slate-200 hover:bg-white dark:hover:border-slate-700 dark:hover:bg-slate-800"
+                      className="h-8 w-8 rounded-lg border border-slate-200/50 bg-white/50 text-red-500 shadow-sm hover:border-slate-300 hover:bg-white sm:border-transparent sm:bg-transparent sm:shadow-none dark:border-slate-700/50 dark:bg-slate-800/50 dark:hover:bg-slate-800"
                     >
                       <Trash2 size={14} />
                     </Button>
