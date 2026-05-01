@@ -7,7 +7,7 @@ import { logout } from '@/entities/user/model/userSlice'
 import { Button } from '@/shared/ui/button'
 import { LogOut, Zap } from 'lucide-react'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 
 import { useState } from 'react'
 import { ConfirmModal } from '@/shared/ui/ConfirmModal'
@@ -18,19 +18,18 @@ export function Navbar() {
   const [logoutUser, { isLoading: isLoggingOut }] = useLogoutUserMutation()
   const dispatch = useDispatch()
   const pathname = usePathname()
+  const router = useRouter()
   const [showLogoutModal, setShowLogoutModal] = useState(false)
 
   const handleLogout = async () => {
     try {
       await logoutUser({}).unwrap()
       dispatch(logout())
-      if (typeof window !== 'undefined') {
-        window.location.href = '/login'
-      }
+      router.push('/login')
     } catch {
       // Even if API fails, logout locally
       dispatch(logout())
-      window.location.href = '/login'
+      router.push('/login')
     }
   }
 
